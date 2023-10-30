@@ -9,5 +9,8 @@
   "license": "MIT",
   "engines": {
     "node": "20.8.0"
+  },
+  "devDependencies": {
+    "prettier": "3.0.3"
   }
 }
