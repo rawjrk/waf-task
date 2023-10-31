@@ -7,10 +7,18 @@ body {
 }
 
 :root {
-  --screen-bg: white;
+  --main-bg: #223;
+  --main-color: #eef;
+
+  --screen-bg: #335;
   --screen-border: 1px solid black;
-  --snake-color: green;
+  --snake-color: #25cf5a;
   --cell-size: 15px;
+  --active-button-bg: #ffce00;
+  --active-button-text: #a40000;
+
+  background-color: var(--main-bg);
+  color: var(--main-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,4 +28,40 @@ body {
 h1,
 h2 {
   text-align: center;
+}
+
+a,
+button {
+  display: inline-block;
+  font-size: 1em;
+  font-family: inherit;
+  background-color: var(--screen-bg);
+  color: var(--main-color);
+  border: none;
+  margin: 0.2em;
+  padding: 0.5rem;
+}
+
+a:hover,
+button:hover {
+  background-color: var(--active-button-bg);
+  color: var(--active-button-text);
+  transform: scale(110%);
+}
+
+a:active,
+button:active {
+  transform: scale(95%);
+}
+
+a {
+  text-decoration: none;
+}
+
+#homepage-link {
+  background-color: inherit;
+}
+
+#homepage-link:hover {
+  color: inherit;
 }

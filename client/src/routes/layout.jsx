@@ -1,9 +1,11 @@
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 function Layout() {
   return (
     <>
-      <h1>SnakeN</h1>
+      <h1>
+        <Link id="homepage-link">SnakeN</Link>
+      </h1>
       <Outlet />
     </>
   )

@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import useSnake from '../hooks/useSnake'
 import useKeyControls from '../hooks/useKeyControls'
 import Screen from '../components/Screen'
+import './gameplay.css'
 
 export default function Game() {
   const screen = { width: 20, height: 20 }
   let tickTime = 1000
   const [paused, setPaused] = useState(true)
+  const [hideControls, setHideControls] = useState(true)
 
   const initPosition = [
     { x: 6, y: 4 },
@@ -33,6 +36,7 @@ export default function Game() {
   const moveLeft = () => changeDirection('left')
   const moveRight = () => changeDirection('right')
   const tooglePause = () => setPaused(!paused)
+  const toogleHideControls = () => setHideControls(!hideControls)
 
   useKeyControls({
     ArrowUp: moveUp,
@@ -52,30 +56,44 @@ export default function Game() {
 
     Space: tooglePause,
     KeyP: tooglePause,
+
+    KeyH: toogleHideControls,
   })
 
   return (
-    <>
+    <div id="game">
       <Screen width={screen.width} height={screen.height} snake={position} />
 
-      <button onClick={tooglePause} tabIndex={-1}>
-        {paused ? 'Resume' : 'Pause'}
-      </button>
-      <div>
-        <p>controls:</p>
+      <div id="switches">
+        <button onClick={tooglePause} tabIndex={-1}>
+          {paused ? 'Resume' : 'Pause'}
+        </button>
+        <button onClick={toogleHideControls} tabIndex={-1}>
+          {!hideControls ? 'Hide' : 'Show'} Controls
+        </button>
+        <Link to={'../scores'}>Scores</Link>
       </div>
-      <button onClick={moveUp} tabIndex={-1}>
-        Up
-      </button>
-      <button onClick={moveLeft} tabIndex={-1}>
-        Left
-      </button>
-      <button onClick={moveDown} tabIndex={-1}>
-        Down
-      </button>
-      <button onClick={moveRight} tabIndex={-1}>
-        Right
-      </button>
-    </>
+
+      <div id="controls" hidden={hideControls}>
+        <div>
+          <button onClick={moveUp} tabIndex={-1}>
+            &uarr;
+          </button>
+        </div>
+        <div>
+          <button onClick={moveLeft} tabIndex={-1}>
+            &larr;
+          </button>
+
+          <button onClick={moveDown} tabIndex={-1}>
+            &darr;
+          </button>
+          <button onClick={moveRight} tabIndex={-1}>
+            &rarr;
+          </button>
+        </div>
+        <div></div>
+      </div>
+    </div>
   )
 }
