@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSnake } from '../hooks/useSnake'
 import Screen from '../components/Screen'
 
 export default function Game() {
   const screen = { width: 20, height: 20 }
   let tickTime = 1000
+  const [paused, setPaused] = useState(true)
 
   const initPosition = [
     [6, 4],
@@ -21,7 +22,7 @@ export default function Game() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      move()
+      if (!paused) move()
     }, tickTime)
     return () => clearInterval(interval)
   })
@@ -35,6 +36,9 @@ export default function Game() {
       <Screen width={screen.width} height={screen.height} snake={position} />
 
       <button onClick={move}>Move</button>
+      <button onClick={() => setPaused(!paused)}>
+        {paused ? 'Start' : 'Pause'}
+      </button>
       <div>
         <p>controls:</p>
       </div>
