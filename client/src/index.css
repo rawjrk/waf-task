@@ -1,0 +1,23 @@
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+:root {
+  --screen-bg: black;
+  --screen-border: 1px solid white;
+  --snake-color: green;
+  --cell-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+h1,
+h2 {
+  text-align: center;
+}

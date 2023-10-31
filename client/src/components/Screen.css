@@ -1,0 +1,23 @@
+#screen {
+  border: 1px solid var(--screen-borders);
+  background-color: var(--screen-borders);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  /* border: var(--screen-border); */
+  width: var(--cell-size);
+  height: var(--cell-size);
+}
+
+.cell.empty {
+  background-color: var(--screen-bg);
+}
+
+.cell.snake {
+  background-color: var(--snake-color);
+}
