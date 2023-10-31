@@ -7,8 +7,8 @@ body {
 }
 
 :root {
-  --screen-bg: black;
-  --screen-border: 1px solid white;
+  --screen-bg: white;
+  --screen-border: 1px solid black;
   --snake-color: green;
   --cell-size: 15px;
   display: flex;

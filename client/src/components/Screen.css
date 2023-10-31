@@ -1,5 +1,5 @@
 #screen {
-  border: 1px solid var(--screen-borders);
+  border: var(--screen-border);
   background-color: var(--screen-borders);
 }
 
@@ -9,7 +9,6 @@
 }
 
 .cell {
-  /* border: var(--screen-border); */
   width: var(--cell-size);
   height: var(--cell-size);
 }
