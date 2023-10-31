@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const useSnake = (initPosition, initDirection, xLimit, yLimit) => {
+export default (initPosition, initDirection, xLimit, yLimit) => {
   const [position, setPosition] = useState(initPosition)
   const [direction, setDirection] = useState(initDirection)
 

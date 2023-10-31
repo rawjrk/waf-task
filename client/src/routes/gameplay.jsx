@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSnake } from '../hooks/useSnake'
+import useSnake from '../hooks/useSnake'
 import Screen from '../components/Screen'
 
 export default function Game() {
