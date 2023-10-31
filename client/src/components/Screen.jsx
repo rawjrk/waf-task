@@ -9,7 +9,7 @@ export default function Screen({ width = 10, height = 10, snake = [] }) {
             <div
               key={`${x}-${y}`}
               className={`cell ${
-                snake.find((coord) => coord[0] === x && coord[1] === y)
+                snake.find((coord) => coord.x === x && coord.y === y)
                   ? 'snake'
                   : 'empty'
               }`}

@@ -8,9 +8,9 @@ export default function Game() {
   const [paused, setPaused] = useState(true)
 
   const initPosition = [
-    [6, 4],
-    [5, 4],
-    [4, 4],
+    { x: 6, y: 4 },
+    { x: 5, y: 4 },
+    { x: 4, y: 4 },
   ]
   const initDirection = 'right'
   const [position, move, changeDirection] = useSnake(

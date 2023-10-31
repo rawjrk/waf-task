@@ -5,18 +5,18 @@ export const useSnake = (initPosition, initDirection, xLimit, yLimit) => {
   const [direction, setDirection] = useState(initDirection)
 
   const move = () => {
-    const [[headX, headY]] = position
+    const [head] = position
 
     let newHead = []
-    if (direction === 'left') newHead = [headX - 1, headY]
-    if (direction === 'right') newHead = [headX + 1, headY]
-    if (direction === 'up') newHead = [headX, headY - 1]
-    if (direction === 'down') newHead = [headX, headY + 1]
+    if (direction === 'left') newHead = { ...head, x: head.x - 1 }
+    if (direction === 'right') newHead = { ...head, x: head.x + 1 }
+    if (direction === 'up') newHead = { ...head, y: head.y - 1 }
+    if (direction === 'down') newHead = { ...head, y: head.y + 1 }
 
-    if (newHead[0] >= xLimit) newHead[0] = 0
-    if (newHead[1] >= yLimit) newHead[1] = 0
-    if (newHead[0] < 0) newHead[0] = xLimit - 1
-    if (newHead[1] < 0) newHead[1] = yLimit - 1
+    if (newHead.x >= xLimit) newHead.x = 0
+    if (newHead.y >= yLimit) newHead.y = 0
+    if (newHead.x < 0) newHead.x = xLimit - 1
+    if (newHead.y < 0) newHead.y = yLimit - 1
 
     setPosition([newHead, ...position.slice(0, -1)])
   }
