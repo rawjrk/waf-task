@@ -1,11 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Layout from './routes/layout'
-import ErrorPage from './routes/error-page'
-import Home from './routes/home'
-import Game from './routes/gameplay'
-import Scores from './routes/score-list'
+import { Home, Layout, ErrorPage, Game, Scores } from './routes'
 import './index.css'
 
 const router = createBrowserRouter([
