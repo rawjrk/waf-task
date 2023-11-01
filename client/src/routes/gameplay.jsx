@@ -1,43 +1,52 @@
 import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  moveSnake,
+  changeDirection,
+  tooglePause as tooglePauseAction,
+  restartGame,
+  selectScreenSize,
+  selectTickTime,
+  selectGameStarted,
+  selectGamePaused,
+  selectGameOver,
+  selectPoints,
+  selectSnake,
+  selectApple,
+} from './gameSlice'
 import { Link } from 'react-router-dom'
-import useSnake from '../hooks/useSnake'
 import useKeyControls from '../hooks/useKeyControls'
 import Screen from '../components/Screen'
 import './gameplay.css'
 
 export default function Game() {
-  const screen = { width: 20, height: 20 }
-  let tickTime = 200
-  const [paused, setPaused] = useState(true)
-  const [hideControls, setHideControls] = useState(true)
+  const { x: width, y: height } = useSelector(selectScreenSize)
+  const tickTime = useSelector(selectTickTime)
 
-  const initPosition = [
-    { x: 6, y: 4 },
-    { x: 5, y: 4 },
-    { x: 4, y: 4 },
-  ]
-  const initDirection = 'right'
-  const [
-    snakePosition,
-    applePosition,
-    points,
-    move,
-    changeDirection,
-    gameOver,
-  ] = useSnake(initPosition, initDirection, screen.width, screen.height)
+  const gameStarted = useSelector(selectGameStarted)
+  const gamePaused = useSelector(selectGamePaused)
+  const gameOver = useSelector(selectGameOver)
+
+  const score = useSelector(selectPoints)
+  const snakePosition = useSelector(selectSnake)
+  const applePosition = useSelector(selectApple)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!paused && !gameOver) move()
+      if (!gamePaused && !gameOver) dispatch(moveSnake())
     }, tickTime)
     return () => clearInterval(interval)
   })
 
-  const moveUp = () => changeDirection('up')
-  const moveDown = () => changeDirection('down')
-  const moveLeft = () => changeDirection('left')
-  const moveRight = () => changeDirection('right')
-  const tooglePause = () => setPaused(!paused)
+  const moveUp = () => dispatch(changeDirection('up'))
+  const moveDown = () => dispatch(changeDirection('down'))
+  const moveLeft = () => dispatch(changeDirection('left'))
+  const moveRight = () => dispatch(changeDirection('right'))
+  const tooglePause = () => dispatch(tooglePauseAction())
+
+  const [hideControls, setHideControls] = useState(true)
   const toogleHideControls = () => setHideControls(!hideControls)
 
   useKeyControls({
@@ -65,20 +74,20 @@ export default function Game() {
   return (
     <div id="game">
       <div id="stats">
-        <p>Points: {points}</p>
+        <p>Points: {score}</p>
         <p hidden={!gameOver}>Game Over!</p>
       </div>
 
       <Screen
-        width={screen.width}
-        height={screen.height}
+        width={width}
+        height={height}
         snake={snakePosition}
         apple={applePosition}
       />
 
       <div id="switches">
         <button onClick={tooglePause} tabIndex={-1}>
-          {paused ? 'Resume' : 'Pause'}
+          {gamePaused ? 'Resume' : 'Pause'}
         </button>
         <button onClick={toogleHideControls} tabIndex={-1}>
           {!hideControls ? 'Hide' : 'Show'} Controls
