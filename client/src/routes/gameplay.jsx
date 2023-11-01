@@ -62,10 +62,6 @@ export default function Game() {
     KeyH: toogleHideControls,
   })
 
-  useEffect(() => {
-    console.log(applePosition)
-  }, [applePosition])
-
   return (
     <div id="game">
       <div id="stats">

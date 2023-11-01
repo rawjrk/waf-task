@@ -4,8 +4,8 @@ const randomPosition = (xLimit, yLimit, snake) => {
   let x, y
 
   do {
-    x = Math.round(Math.random() * xLimit)
-    y = Math.round(Math.random() * yLimit)
+    x = Math.round(Math.random() * (xLimit - 1))
+    y = Math.round(Math.random() * (yLimit - 1))
   } while (snake.find((coord) => coord.x === x && coord.y === y))
 
   return { x, y }
