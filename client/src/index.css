@@ -13,6 +13,7 @@ body {
   --screen-bg: #335;
   --screen-border: 1px solid black;
   --snake-color: #25cf5a;
+  --apple-color: #cf254d;
   --cell-size: 15px;
   --active-button-bg: #ffce00;
   --active-button-text: #a40000;

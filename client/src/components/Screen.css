@@ -21,3 +21,7 @@
 #screen .cell.snake {
   background-color: var(--snake-color);
 }
+
+#screen .cell.apple {
+  background-color: var(--apple-color);
+}

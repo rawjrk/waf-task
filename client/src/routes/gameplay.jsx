@@ -7,7 +7,7 @@ import './gameplay.css'
 
 export default function Game() {
   const screen = { width: 20, height: 20 }
-  let tickTime = 1000
+  let tickTime = 200
   const [paused, setPaused] = useState(true)
   const [hideControls, setHideControls] = useState(true)
 
@@ -17,16 +17,18 @@ export default function Game() {
     { x: 4, y: 4 },
   ]
   const initDirection = 'right'
-  const [position, move, changeDirection] = useSnake(
-    initPosition,
-    initDirection,
-    screen.width,
-    screen.height,
-  )
+  const [
+    snakePosition,
+    applePosition,
+    points,
+    move,
+    changeDirection,
+    gameOver,
+  ] = useSnake(initPosition, initDirection, screen.width, screen.height)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!paused) move()
+      if (!paused && !gameOver) move()
     }, tickTime)
     return () => clearInterval(interval)
   })
@@ -60,9 +62,23 @@ export default function Game() {
     KeyH: toogleHideControls,
   })
 
+  useEffect(() => {
+    console.log(applePosition)
+  }, [applePosition])
+
   return (
     <div id="game">
-      <Screen width={screen.width} height={screen.height} snake={position} />
+      <div id="stats">
+        <p>Points: {points}</p>
+        <p hidden={!gameOver}>Game Over!</p>
+      </div>
+
+      <Screen
+        width={screen.width}
+        height={screen.height}
+        snake={snakePosition}
+        apple={applePosition}
+      />
 
       <div id="switches">
         <button onClick={tooglePause} tabIndex={-1}>
