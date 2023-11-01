@@ -4,9 +4,10 @@ export default (controls) => {
   const handleUserKeyPress = useCallback((e) => {
     e.preventDefault()
     e.stopPropagation()
-    console.log(e.code)
-    if (e.code in controls) controls[e.code]()
-    else console.log('Unassigned')
+
+    if (e.code in controls) {
+      controls[e.code]()
+    }
   })
 
   useEffect(() => {
