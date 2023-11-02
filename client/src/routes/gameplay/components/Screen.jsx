@@ -1,4 +1,5 @@
 import './Screen.css'
+import { matchPosition, includesPosition } from '../../../pos'
 
 export default function Screen({
   width = 10,
@@ -14,9 +15,9 @@ export default function Screen({
             <div
               key={`${x}-${y}`}
               className={`cell ${
-                apple.x === x && apple.y === y
+                matchPosition(apple, { x, y })
                   ? 'apple'
-                  : snake.find((coord) => coord.x === x && coord.y === y)
+                  : includesPosition(snake, { x, y })
                   ? 'snake'
                   : 'empty'
               }`}
