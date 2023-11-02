@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { getScoreList } from '../../api'
 import Score from './components/Score'
 import './ScoreList.css'
@@ -27,6 +28,11 @@ export default function Scores() {
           points={score.points}
         />
       ))}
+
+      <nav>
+        <Link to={'../gameplay'}>New Game</Link>
+        <Link to={'..'}>Quit to Menu</Link>
+      </nav>
     </div>
   )
 }

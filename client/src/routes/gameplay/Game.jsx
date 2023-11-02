@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
   moveSnake,
   changeDirection,
@@ -14,7 +15,6 @@ import {
   selectSnake,
   selectApple,
 } from './gameSlice'
-import { Link } from 'react-router-dom'
 import useKeyControls from '../../hooks/useKeyControls'
 import Screen from './components/Screen'
 import './Game.css'
@@ -88,7 +88,7 @@ export default function Game() {
         apple={applePosition}
       />
 
-      <div id="switches">
+      <nav id="switches">
         <div>
           <button onClick={tooglePause} tabIndex={-1}>
             {gamePaused ? 'Resume' : 'Pause'}
@@ -100,9 +100,9 @@ export default function Game() {
         </div>
         <div>
           <button onClick={restartGame}>Restart Game</button>
-          <button>Quit to Menu</button>
+          <Link to={'..'}>Quit to Menu</Link>
         </div>
-      </div>
+      </nav>
 
       <div id="controls" hidden={hideControls}>
         <div>

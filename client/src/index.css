@@ -63,6 +63,10 @@ a {
   text-decoration: none;
 }
 
+h1 > #homepage-link {
+  margin-top: 0;
+}
+
 #homepage-link {
   background-color: inherit;
 }
