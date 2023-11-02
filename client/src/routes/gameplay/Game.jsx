@@ -86,13 +86,19 @@ export default function Game() {
       />
 
       <div id="switches">
-        <button onClick={tooglePause} tabIndex={-1}>
-          {gamePaused ? 'Resume' : 'Pause'}
-        </button>
-        <button onClick={toogleHideControls} tabIndex={-1}>
-          {!hideControls ? 'Hide' : 'Show'} Controls
-        </button>
-        <Link to={'../scores'}>Scores</Link>
+        <div>
+          <button onClick={tooglePause} tabIndex={-1}>
+            {gamePaused ? 'Resume' : 'Pause'}
+          </button>
+          <button onClick={toogleHideControls} tabIndex={-1}>
+            {!hideControls ? 'Hide' : 'Show'} Controls
+          </button>
+          <Link to={'../scores'}>Scores</Link>
+        </div>
+        <div>
+          <button>Restart Game</button>
+          <button>Quit to Menu</button>
+        </div>
       </div>
 
       <div id="controls" hidden={hideControls}>

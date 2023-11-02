@@ -1,8 +1,11 @@
 #switches {
+  margin-top: 0.2rem;
+}
+
+#switches div {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #controls {

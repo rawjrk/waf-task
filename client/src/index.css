@@ -1,17 +1,8 @@
-html,
-body {
-  margin: 0;
-  box-sizing: border-box;
-  border-collapse: collapse;
-  font-family: 'Courier New', Courier, monospace;
-}
-
 :root {
   --main-bg: #223;
   --main-color: #eef;
 
   --screen-bg: #335;
-  --screen-border: 1px solid black;
   --snake-color: #25cf5a;
   --apple-color: #cf254d;
   --cell-size: 15px;
@@ -22,6 +13,14 @@ body {
   --scores-header-bg: #1b1b2e;
   --scores-row-bg: #22223b;
   --scores-row-bg2: #292947;
+}
+
+html,
+body {
+  margin: 0;
+  box-sizing: border-box;
+  border-collapse: collapse;
+  font-family: 'Courier New', Courier, monospace;
 
   background-color: var(--main-bg);
   color: var(--main-color);
