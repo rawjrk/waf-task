@@ -4,7 +4,7 @@ import {
   moveSnake,
   changeDirection,
   tooglePause as tooglePauseAction,
-  restartGame,
+  restartGame as restartGameAction,
   selectScreenSize,
   selectTickTime,
   selectGameStarted,
@@ -45,6 +45,7 @@ export default function Game() {
   const moveLeft = () => dispatch(changeDirection('left'))
   const moveRight = () => dispatch(changeDirection('right'))
   const tooglePause = () => dispatch(tooglePauseAction())
+  const restartGame = () => dispatch(restartGameAction())
 
   const [hideControls, setHideControls] = useState(true)
   const toogleHideControls = () => setHideControls(!hideControls)
@@ -67,6 +68,8 @@ export default function Game() {
 
     Space: tooglePause,
     KeyP: tooglePause,
+
+    KeyR: restartGame,
 
     KeyH: toogleHideControls,
   })
@@ -96,7 +99,7 @@ export default function Game() {
           <Link to={'../scores'}>Scores</Link>
         </div>
         <div>
-          <button>Restart Game</button>
+          <button onClick={restartGame}>Restart Game</button>
           <button>Quit to Menu</button>
         </div>
       </div>

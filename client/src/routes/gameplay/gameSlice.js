@@ -79,7 +79,10 @@ const gameSlice = createSlice({
       state.gameOver = true
     },
     restartGame(state) {
-      state = initialState
+      return {
+        ...initialState,
+        apple: randomPosition(initialState.screenSize, initialState.snake),
+      }
     },
   },
 })
