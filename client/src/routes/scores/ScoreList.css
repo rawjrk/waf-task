@@ -1,0 +1,37 @@
+#scores {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 300px;
+  width: 95vw;
+  max-width: 480px;
+}
+
+#scores h2 {
+  margin-top: 0;
+}
+
+#scores .row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background-color: var(--scores-row-bg);
+  font-size: 1.2rem;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid var(--scores-header-bg);
+  border-top: none;
+  color: var(--scores-text-color);
+}
+
+#scores .row:nth-of-type(1) {
+  color: inherit;
+  background-color: var(--scores-header-bg);
+}
+
+#scores .row:nth-of-type(2n) {
+  background-color: var(--scores-row-bg2);
+}
+
+#scores .col {
+  margin: 0 0.5rem;
+  text-align: center;
+}

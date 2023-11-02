@@ -18,6 +18,11 @@ body {
   --active-button-bg: #ffce00;
   --active-button-text: #a40000;
 
+  --scores-text-color: #dde;
+  --scores-header-bg: #1b1b2e;
+  --scores-row-bg: #22223b;
+  --scores-row-bg2: #292947;
+
   background-color: var(--main-bg);
   color: var(--main-color);
   display: flex;
