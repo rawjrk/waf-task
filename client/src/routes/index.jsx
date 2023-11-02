@@ -1,7 +1,7 @@
-import Home from './home'
-import Layout from './layout'
-import ErrorPage from './error-page'
-import Game from './gameplay'
-import Scores from './score-list'
+import Home from './Home'
+import Layout from './Layout'
+import ErrorPage from './ErrorPage'
+import Game from './gameplay/Game'
+import Scores from './scores/ScoreList'
 
 export { Home, Layout, ErrorPage, Game, Scores }

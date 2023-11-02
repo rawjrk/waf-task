@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { matchPosition, includesPosition, randomPosition } from '../pos'
+import { matchPosition, includesPosition, randomPosition } from '../../pos'
 
 const initialState = {
   screenSize: { x: 20, y: 20 },

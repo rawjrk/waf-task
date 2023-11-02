@@ -15,9 +15,9 @@ import {
   selectApple,
 } from './gameSlice'
 import { Link } from 'react-router-dom'
-import useKeyControls from '../hooks/useKeyControls'
-import Screen from '../components/Screen'
-import './gameplay.css'
+import useKeyControls from '../../hooks/useKeyControls'
+import Screen from './components/Screen'
+import './Game.css'
 
 export default function Game() {
   const { x: width, y: height } = useSelector(selectScreenSize)
