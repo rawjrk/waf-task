@@ -9,7 +9,7 @@ import {
   moveSnake,
 } from './gameSlice'
 import { addScore } from '../../api'
-import NicknameInput from './components/NicknameInput'
+import AskNickname from './components/AskNickname'
 import Screen from './components/Screen'
 import Stats from './components/Stats'
 import Switches from './components/Switches'
@@ -39,7 +39,7 @@ export default function Game() {
   }, [gameOver])
 
   if (!nickname) {
-    return <NicknameInput />
+    return <AskNickname />
   }
 
   return (

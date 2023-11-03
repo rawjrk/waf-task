@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home, Layout, ErrorPage, Game, Scores } from './routes'
+import { Home, Layout, ErrorPage, Game, Scores, Options } from './routes'
 import store from './store'
 import './index.css'
 
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/scores',
         element: <Scores />,
+      },
+      {
+        path: '/options',
+        element: <Options />,
       },
     ],
   },

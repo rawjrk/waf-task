@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { matchPosition, includesPosition, randomPosition } from '../../pos'
+import { localRead, localSave } from '../../cache'
+
+export const feedOptions = [1, 5, 10]
 
 const initialState = {
   screenSize: { x: 20, y: 20 },
-
   tickTime: 200,
-  incrementValue: 1,
+
+  incrementValue: localRead('increment-value') || 1,
   points: 0,
 
   gameStarted: false,
@@ -25,8 +28,20 @@ const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
+    increaseSpeed(state) {
+      state.tickTime = Math.round(state.tickTime * 0.75)
+    },
     incrementPoints(state) {
       state.points += state.incrementValue
+      if (state.points % 50 === 0) {
+        gameSlice.caseReducers.increaseSpeed(state)
+      }
+    },
+    setIncrementValue(state, action) {
+      if (feedOptions.includes(action.payload)) {
+        state.incrementValue = action.payload
+        localSave('increment-value', state.incrementValue)
+      }
     },
     spawnApple(state) {
       state.apple = randomPosition(state.screenSize, state.snake)
@@ -91,11 +106,17 @@ const gameSlice = createSlice({
   },
 })
 
-export const { moveSnake, changeDirection, tooglePause, restartGame } =
-  gameSlice.actions
+export const {
+  moveSnake,
+  changeDirection,
+  setIncrementValue,
+  tooglePause,
+  restartGame,
+} = gameSlice.actions
 
 export const selectScreenSize = (state) => state.game.screenSize
 export const selectTickTime = (state) => state.game.tickTime
+export const selectIncrementValue = (state) => state.game.incrementValue
 
 export const selectGameStarted = (state) => state.game.gameStarted
 export const selectGamePaused = (state) => state.game.gamePaused

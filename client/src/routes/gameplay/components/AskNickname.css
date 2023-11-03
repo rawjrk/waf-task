@@ -1,0 +1,10 @@
+#ask-nickname {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#ask-nickname nav {
+  margin-top: 1rem;
+}

@@ -1,21 +1,21 @@
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { setNickname } from '../../uiSlice'
-import './NicknameInput.css'
+import NicknameInput from '../../../components/NicknameInput'
+import './AskNickname.css'
 
 export default function NickInput() {
   const nicknameInputRef = useRef()
   const dispatch = useDispatch()
 
   return (
-    <div id="nickname-input">
+    <div id="ask-nickname">
       <p>Input your nickname for score board.</p>
-      <div>
-        <input
-          ref={nicknameInputRef}
-          type="text"
-          placeholder="e.g. SnakeEater"
-        />
+
+      <NicknameInput inputRef={nicknameInputRef} />
+
+      <nav>
         <button
           onClick={() => {
             const { value } = nicknameInputRef.current
@@ -26,7 +26,8 @@ export default function NickInput() {
         >
           Submit
         </button>
-      </div>
+        <Link to={'..'}>Quit to Menu</Link>
+      </nav>
     </div>
   )
 }

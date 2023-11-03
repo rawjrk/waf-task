@@ -1,0 +1,30 @@
+#feed-option-select {
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  min-width: 16rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#feed-option-select label {
+  min-width: 4rem;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--screen-bg);
+  color: var(--main-color);
+}
+
+#feed-option-select label:has(input[type='radio']:checked) {
+  background-color: var(--active-button-bg);
+  color: var(--active-button-text);
+}
+
+#feed-option-select input[type='radio'] {
+  display: none;
+}
