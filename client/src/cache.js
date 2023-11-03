@@ -1,5 +1,5 @@
 const save = (storage, key, data) => {
-  localStorage.setItem(key, JSON.stringify(data))
+  storage.setItem(key, JSON.stringify(data))
 }
 
 const read = (storage, key) => {
