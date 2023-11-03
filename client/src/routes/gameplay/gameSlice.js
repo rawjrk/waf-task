@@ -75,6 +75,8 @@ const gameSlice = createSlice({
       state.snake.unshift(newHead)
     },
     changeDirection(state, action) {
+      if (state.gamePaused) gameSlice.caseReducers.tooglePause(state)
+
       const newDirection = action.payload
 
       if (state.direction === 'right' && newDirection === 'left') return
