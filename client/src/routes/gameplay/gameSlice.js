@@ -70,6 +70,9 @@ const gameSlice = createSlice({
       state.direction = newDirection
     },
     tooglePause(state) {
+      if (!state.gameStarted) {
+        state.gameStarted = true
+      }
       if (!state.gameOver) {
         state.gamePaused = !state.gamePaused
       }
@@ -79,6 +82,7 @@ const gameSlice = createSlice({
       state.gameOver = true
     },
     restartGame(state) {
+      if (!state.gameStarted) return
       return {
         ...initialState,
         apple: randomPosition(initialState.screenSize, initialState.snake),

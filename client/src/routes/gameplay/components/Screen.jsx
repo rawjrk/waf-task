@@ -1,17 +1,18 @@
-import './Screen.css'
+import { useSelector } from 'react-redux'
+import { selectScreenSize, selectSnake, selectApple } from '../gameSlice'
 import { matchPosition, includesPosition } from '../../../pos'
+import './Screen.css'
 
-export default function Screen({
-  width = 10,
-  height = 10,
-  snake = [],
-  apple = [],
-}) {
+export default function Screen() {
+  const screen = useSelector(selectScreenSize)
+  const snake = useSelector(selectSnake)
+  const apple = useSelector(selectApple)
+
   return (
     <div id="screen">
-      {[...Array(width)].map((ely, y) => (
+      {[...Array(screen.x)].map((ely, y) => (
         <div key={y} className="row">
-          {[...Array(height)].map((elx, x) => (
+          {[...Array(screen.y)].map((elx, x) => (
             <div
               key={`${x}-${y}`}
               className={`cell ${
