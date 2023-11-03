@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getScoreList } from '../../lib/api'
+import { formatScore } from '../../lib/format'
 import Score from './components/Score'
 import './ScoreList.css'
 
@@ -18,14 +19,14 @@ export default function Scores() {
   return (
     <div id="scores">
       <h2>Best Scores</h2>
-      <Score position={'#'} name={'Nickname'} points={'P'} />
+      <Score position={'#'} name={'Nickname'} points={'PNTS/FO'} />
 
       {scoreList.map((score, i) => (
         <Score
           key={i}
           position={i + 1}
           name={score.name}
-          points={score.points}
+          points={formatScore(score.points, 0)}
         />
       ))}
 

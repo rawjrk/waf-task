@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { selectNickname } from '../../uiSlice'
 import { selectPoints, selectIncrementValue } from '../gameSlice'
+import { formatScore } from '../../../lib/format'
 import './Stats.css'
 
 export default function Stats() {
@@ -10,9 +11,8 @@ export default function Stats() {
 
   return (
     <div id="stats">
-      <p>Nickname: {nickname}</p>
-      <p>Points: {points}</p>
-      <p>Feed Option: {feedOption}</p>
+      <p>{nickname}</p>
+      <p>{formatScore(points, feedOption)}</p>
     </div>
   )
 }
