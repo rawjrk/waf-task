@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {
@@ -20,6 +20,9 @@ import Screen from './components/Screen'
 import './Game.css'
 
 export default function Game() {
+  const [nickname, setNickname] = useState('')
+  const nicknameInputRef = useRef()
+
   const { x: width, y: height } = useSelector(selectScreenSize)
   const tickTime = useSelector(selectTickTime)
 
@@ -73,6 +76,29 @@ export default function Game() {
 
     KeyH: toogleHideControls,
   })
+
+  if (!nickname) {
+    return (
+      <div id="nick-input">
+        <p>Input your nickname for score board.</p>
+        <div>
+          <input
+            ref={nicknameInputRef}
+            type="text"
+            placeholder="e.g. SnakeEater"
+          />
+          <button
+            onClick={() => {
+              const { value } = nicknameInputRef.current
+              if (value) setNickname(value)
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div id="game">

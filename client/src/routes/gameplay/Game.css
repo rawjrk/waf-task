@@ -1,3 +1,18 @@
+#nick-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#nick-input input {
+  font-family: inherit;
+  font-size: inherit;
+  min-width: 10rem;
+  margin-right: 0.2rem;
+  padding: 0.3rem 0.7rem;
+}
+
 #switches {
   margin-top: 0.2rem;
 }
