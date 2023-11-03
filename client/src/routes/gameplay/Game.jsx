@@ -2,11 +2,13 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectNickname } from '../uiSlice'
 import {
+  selectPoints,
   selectTickTime,
   selectGamePaused,
   selectGameOver,
   moveSnake,
 } from './gameSlice'
+import { addScore } from '../../api'
 import NicknameInput from './components/NicknameInput'
 import Screen from './components/Screen'
 import Stats from './components/Stats'
@@ -16,6 +18,7 @@ import './Game.css'
 
 export default function Game() {
   const nickname = useSelector(selectNickname)
+  const points = useSelector(selectPoints)
   const tickTime = useSelector(selectTickTime)
 
   const dispatch = useDispatch()
@@ -28,6 +31,12 @@ export default function Game() {
     }, tickTime)
     return () => clearInterval(interval)
   })
+
+  useEffect(() => {
+    if (gameOver) {
+      addScore(nickname, points)
+    }
+  }, [gameOver])
 
   if (!nickname) {
     return <NicknameInput />
