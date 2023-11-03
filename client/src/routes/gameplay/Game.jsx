@@ -44,9 +44,6 @@ export default function Game() {
 
   return (
     <div id="game">
-      {/* need Overlay component */}
-      <p hidden={!gameOver}>Game Over!</p>
-
       <Stats />
       <Screen />
       <Switches />

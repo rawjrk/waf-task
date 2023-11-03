@@ -1,6 +1,12 @@
 import { useSelector } from 'react-redux'
-import { selectScreenSize, selectSnake, selectApple } from '../gameSlice'
+import {
+  selectGamePaused,
+  selectScreenSize,
+  selectSnake,
+  selectApple,
+} from '../gameSlice'
 import { matchPosition, includesPosition } from '../../../pos'
+import StatusMessage from './StatusMessage'
 import './Screen.css'
 
 export default function Screen() {
@@ -8,8 +14,12 @@ export default function Screen() {
   const snake = useSelector(selectSnake)
   const apple = useSelector(selectApple)
 
+  const gamePaused = useSelector(selectGamePaused)
+
   return (
-    <div id="screen">
+    <div id="screen" className={gamePaused ? 'screen-paused' : ''}>
+      <StatusMessage />
+
       {[...Array(screen.x)].map((ely, y) => (
         <div key={y} className="row">
           {[...Array(screen.y)].map((elx, x) => (
