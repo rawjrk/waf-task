@@ -15,12 +15,19 @@ import {
   selectSnake,
   selectApple,
 } from './gameSlice'
+import useCachedState from '../../hooks/useCachedState'
 import useKeyControls from '../../hooks/useKeyControls'
 import Screen from './components/Screen'
 import './Game.css'
 
 export default function Game() {
-  const [nickname, setNickname] = useState('')
+  const [hideControls, setHideControls] = useCachedState(
+    true,
+    'local',
+    'hide-controls',
+  )
+
+  const [nickname, setNickname] = useCachedState('', 'local', 'nickname')
   const nicknameInputRef = useRef()
 
   const { x: width, y: height } = useSelector(selectScreenSize)
@@ -49,8 +56,6 @@ export default function Game() {
   const moveRight = () => dispatch(changeDirection('right'))
   const tooglePause = () => dispatch(tooglePauseAction())
   const restartGame = () => dispatch(restartGameAction())
-
-  const [hideControls, setHideControls] = useState(true)
   const toogleHideControls = () => setHideControls(!hideControls)
 
   useKeyControls({
