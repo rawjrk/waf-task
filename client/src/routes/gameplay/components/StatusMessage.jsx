@@ -3,7 +3,10 @@ import {
   selectGameStarted,
   selectGamePaused,
   selectGameOver,
+  selectPoints,
+  selectIncrementValue,
 } from '../gameSlice'
+import { formatScore } from '../../../lib/format'
 import Message from './Message'
 
 export default function StatusMessage() {
@@ -11,14 +14,20 @@ export default function StatusMessage() {
   const gamePaused = useSelector(selectGamePaused)
   const gameOver = useSelector(selectGameOver)
 
+  const points = useSelector(selectPoints)
+  const feedOption = useSelector(selectIncrementValue)
+
   return (
     <>
       {gameOver ? (
-        <Message header={'Game Over'} notes={"press 'R' to restart"} />
+        <Message
+          header={'Game Over'}
+          notes={`your score: ${formatScore(points, feedOption)}`}
+        />
       ) : !gameStarted ? (
-        <Message header={'PAUSED'} notes={'choose any direction to start'} />
+        <Message header={'Paused'} notes={'choose any direction to start'} />
       ) : gamePaused ? (
-        <Message header={'PAUSED'} notes={'choose any direction to resume'} />
+        <Message header={'Paused'} notes={'choose any direction to resume'} />
       ) : (
         ''
       )}
