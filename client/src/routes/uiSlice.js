@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { localRead, localSave } from '../cache'
+import { localRead, localSave } from '../lib/cache'
 
 const initialState = {
   nickname: localRead('nickname') || '',

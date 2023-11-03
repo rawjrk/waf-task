@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getScoreList } from '../../api'
+import { getScoreList } from '../../lib/api'
 import Score from './components/Score'
 import './ScoreList.css'
 

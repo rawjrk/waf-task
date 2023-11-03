@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { matchPosition, includesPosition, randomPosition } from '../../pos'
-import { localRead, localSave } from '../../cache'
+import { matchPosition, includesPosition, randomPosition } from '../../lib/pos'
+import { localRead, localSave } from '../../lib/cache'
 
 export const feedOptions = [1, 5, 10]
 

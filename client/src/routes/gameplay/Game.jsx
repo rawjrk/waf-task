@@ -8,7 +8,7 @@ import {
   selectGameOver,
   moveSnake,
 } from './gameSlice'
-import { addScore } from '../../api'
+import { addScore } from '../../lib/api'
 import AskNickname from './components/AskNickname'
 import Screen from './components/Screen'
 import Stats from './components/Stats'

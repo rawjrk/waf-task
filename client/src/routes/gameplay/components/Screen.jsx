@@ -5,7 +5,7 @@ import {
   selectSnake,
   selectApple,
 } from '../gameSlice'
-import { matchPosition, includesPosition } from '../../../pos'
+import { matchPosition, includesPosition } from '../../../lib/pos'
 import StatusMessage from './StatusMessage'
 import './Screen.css'
 
