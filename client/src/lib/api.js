@@ -7,9 +7,9 @@ export const getScoreList = async () => {
   }
 }
 
-export const addScore = async (name, points) => {
+export const addScore = async (name, points, feedOption) => {
   try {
-    const data = { name, points }
+    const data = { name, points, feedOption }
     await fetch('/api/new', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

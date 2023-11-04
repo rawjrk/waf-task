@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectNickname } from '../uiSlice'
 import {
   selectPoints,
+  selectIncrementValue,
   selectTickTime,
   selectGamePaused,
   selectGameOver,
@@ -19,11 +20,12 @@ import './Game.css'
 export default function Game() {
   const nickname = useSelector(selectNickname)
   const points = useSelector(selectPoints)
+  const feedOption = useSelector(selectIncrementValue)
   const tickTime = useSelector(selectTickTime)
-
-  const dispatch = useDispatch()
   const gamePaused = useSelector(selectGamePaused)
   const gameOver = useSelector(selectGameOver)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,7 +36,7 @@ export default function Game() {
 
   useEffect(() => {
     if (gameOver) {
-      addScore(nickname, points)
+      addScore(nickname, points, feedOption)
     }
   }, [gameOver])
 

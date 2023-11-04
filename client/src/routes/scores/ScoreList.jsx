@@ -12,8 +12,14 @@ export default function Scores() {
     getScoreList().then((data) => setScoreList(data))
   }, [])
 
-  if (!scoreList) {
-    return <h2>Loading...</h2>
+  if (!scoreList.length) {
+    return (
+      <div id="scores">
+        <h2>Best Scores</h2>
+        <Score position={'#'} name={'Nickname'} points={'PNTS/FO'} />
+        <Score position={'$'} name={'(Loading)'} points={'XXXX/XX'} />
+      </div>
+    )
   }
 
   return (
@@ -21,14 +27,18 @@ export default function Scores() {
       <h2>Best Scores</h2>
       <Score position={'#'} name={'Nickname'} points={'PNTS/FO'} />
 
-      {scoreList.map((score, i) => (
-        <Score
-          key={i}
-          position={i + 1}
-          name={score.name}
-          points={formatScore(score.points, 0)}
-        />
-      ))}
+      {scoreList.map((score, i) => {
+        const { position, name, points, feedOption } = score
+
+        return (
+          <Score
+            key={i}
+            position={position}
+            name={name}
+            points={formatScore(points, feedOption)}
+          />
+        )
+      })}
 
       <nav>
         <Link to={'../gameplay'}>New Game</Link>
