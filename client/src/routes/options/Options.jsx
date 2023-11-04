@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { setNickname } from '../uiSlice'
 import { setIncrementValue } from '../gameplay/gameSlice'
 import { FeedOptionSelect, NicknameInput } from '../../components'
@@ -11,6 +11,7 @@ export default function Options() {
   const feedOptionInputRef = useRef()
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const saveChanges = () => {
     const newNickname = nicknameInputRef.current.value
@@ -18,6 +19,8 @@ export default function Options() {
 
     if (newNickname) dispatch(setNickname(newNickname))
     if (newFeedOption) dispatch(setIncrementValue(+newFeedOption))
+
+    navigate('..')
   }
 
   return (
