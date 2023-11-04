@@ -2,7 +2,7 @@ export const getScoreList = async () => {
   try {
     const data = await (await fetch('/api')).json()
     return data
-  } catch {
+  } catch (error) {
     console.error(error)
   }
 }
@@ -15,7 +15,7 @@ export const addScore = async (name, points, feedOption) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
-  } catch {
+  } catch (error) {
     console.error(error)
   }
 }

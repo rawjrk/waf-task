@@ -16,7 +16,7 @@ module.exports.index = async (req, res) => {
     }))
 
     res.status(200).send(result)
-  } catch {
+  } catch (error) {
     res.status(500).send({ status: 500, message: error.message })
     console.error(error)
   }
@@ -31,7 +31,7 @@ module.exports.create = async (req, res) => {
       [name, points, feedOption],
     )
     res.status(200).send({ status: 200, message: 'success!' })
-  } catch {
+  } catch (error) {
     res.status(500).send({ status: 500, message: error.message })
     console.error(error)
   }
