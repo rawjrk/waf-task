@@ -38,6 +38,15 @@
   background-color: var(--scores-row-bg2);
 }
 
+#scores .row.row-current-user {
+  color: var(--scores-current-color);
+  background-color: var(--scores-row-current);
+}
+
+#scores .row.row-current-user:nth-of-type(2n) {
+  background-color: var(--scores-row-current2);
+}
+
 #scores .col {
   margin: 0 0.5rem;
   text-align: center;

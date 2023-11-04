@@ -13,6 +13,10 @@
   --scores-header-bg: #1b1b2e;
   --scores-row-bg: #22223b;
   --scores-row-bg2: #292947;
+
+  --scores-current-color: hsl(110, 33%, 90%);
+  --scores-row-current: hsl(110, 26%, 18%);
+  --scores-row-current2: hsl(110, 27%, 22%);
 }
 
 html,
