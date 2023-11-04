@@ -16,3 +16,15 @@
   width: 3.5rem;
   height: 3.5rem;
 }
+
+#controls div.empty-space {
+  margin: 0.2rem;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+#controls button:hover,
+#controls button:active {
+  background-color: var(--screen-bg);
+  color: var(--main-color);
+}

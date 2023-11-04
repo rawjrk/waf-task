@@ -37,18 +37,22 @@ export default function Controls() {
           &uarr;
         </button>
       </div>
+
       <div>
         <button onClick={moveLeft} tabIndex={-1}>
           &larr;
         </button>
-        <button onClick={moveDown} tabIndex={-1}>
-          &darr;
-        </button>
+        <div className="empty-space" />
         <button onClick={moveRight} tabIndex={-1}>
           &rarr;
         </button>
       </div>
-      <div></div>
+
+      <div>
+        <button onClick={moveDown} tabIndex={-1}>
+          &darr;
+        </button>
+      </div>
     </div>
   )
 }
