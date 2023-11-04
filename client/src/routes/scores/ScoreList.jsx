@@ -1,15 +1,20 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { selectScoreList, setScoreList } from '../uiSlice'
 import { getScoreList } from '../../lib/api'
 import { formatScore } from '../../lib/format'
 import Score from './components/Score'
 import './ScoreList.css'
 
 export default function Scores() {
-  const [scoreList, setScoreList] = useState([])
+  // const [scoreList, setScoreList] = useState([])
+  const scoreList = useSelector(selectScoreList)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    getScoreList().then((data) => setScoreList(data))
+    getScoreList().then((data) => dispatch(setScoreList(data)))
   }, [])
 
   if (!scoreList.length) {
