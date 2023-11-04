@@ -1,10 +1,9 @@
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setNickname } from './uiSlice'
-import { setIncrementValue } from './gameplay/gameSlice'
-import NicknameInput from '../components/NicknameInput'
-import FeedOptionSelect from '../components/FeedOptionSelect'
+import { setNickname } from '../uiSlice'
+import { setIncrementValue } from '../gameplay/gameSlice'
+import { FeedOptionSelect, NicknameInput } from '../../components'
 import './Options.css'
 
 export default function Options() {

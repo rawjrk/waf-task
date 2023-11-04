@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectNickname } from '../routes/uiSlice'
+import { selectNickname } from '../../routes/uiSlice'
 import './NicknameInput.css'
 
 export default function NicknameInput({ inputRef }) {

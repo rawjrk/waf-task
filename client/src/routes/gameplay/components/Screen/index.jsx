@@ -4,9 +4,9 @@ import {
   selectScreenSize,
   selectSnake,
   selectApple,
-} from '../gameSlice'
-import { matchPosition, includesPosition } from '../../../lib/pos'
-import StatusMessage from './StatusMessage'
+} from '../../gameSlice'
+import { matchPosition, includesPosition } from '../../../../lib/pos'
+import StatusMessage from '../StatusMessage'
 import './Screen.css'
 
 export default function Screen() {

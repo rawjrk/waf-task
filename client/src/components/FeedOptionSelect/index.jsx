@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { feedOptions, selectIncrementValue } from '../routes/gameplay/gameSlice'
+import {
+  feedOptions,
+  selectIncrementValue,
+} from '../../routes/gameplay/gameSlice'
 import './FeedOptionSelect.css'
 
 export default function FeedOptionSelect({ inputRef }) {

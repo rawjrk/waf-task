@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
-import { selectNickname } from '../../uiSlice'
-import { selectPoints, selectIncrementValue } from '../gameSlice'
-import { formatScore } from '../../../lib/format'
+import { selectNickname } from '../../../uiSlice'
+import { selectPoints, selectIncrementValue } from '../../gameSlice'
+import { formatScore } from '../../../../lib/format'
 import './Stats.css'
 
 export default function Stats() {

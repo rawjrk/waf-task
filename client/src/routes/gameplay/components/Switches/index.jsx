@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import {
   selectShowControls,
   toogleShowControls as toogleShowControlsAction,
-} from '../../uiSlice'
+} from '../../../uiSlice'
 import {
   selectGameStarted,
   selectGamePaused,
   tooglePause as tooglePauseAction,
   restartGame as restartGameAction,
-} from '../gameSlice'
-import useKeyControls from '../../../hooks/useKeyControls'
+} from '../../gameSlice'
+import useKeyControls from '../../../../hooks/useKeyControls'
 import './Switches.css'
 
 export default function Switches() {

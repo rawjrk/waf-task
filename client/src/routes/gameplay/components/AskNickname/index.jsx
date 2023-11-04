@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { setNickname } from '../../uiSlice'
-import NicknameInput from '../../../components/NicknameInput'
+import { setNickname } from '../../../uiSlice'
+import { NicknameInput } from '../../../../components'
 import './AskNickname.css'
 
 export default function NickInput() {

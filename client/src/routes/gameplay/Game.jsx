@@ -10,11 +10,7 @@ import {
   moveSnake,
 } from './gameSlice'
 import { addScore } from '../../lib/api'
-import AskNickname from './components/AskNickname'
-import Screen from './components/Screen'
-import Stats from './components/Stats'
-import Switches from './components/Switches'
-import Controls from './components/Controls'
+import { Screen, Stats, Switches, Controls, AskNickname } from './components'
 import './Game.css'
 
 export default function Game() {

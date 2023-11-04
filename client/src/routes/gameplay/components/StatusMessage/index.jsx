@@ -5,9 +5,9 @@ import {
   selectGameOver,
   selectPoints,
   selectIncrementValue,
-} from '../gameSlice'
-import { formatScore } from '../../../lib/format'
-import Message from './Message'
+} from '../../gameSlice'
+import { formatScore } from '../../../../lib/format'
+import Message from '../Message'
 
 export default function StatusMessage() {
   const gameStarted = useSelector(selectGameStarted)

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { selectShowControls, toogleShowControls } from '../../uiSlice'
-import { changeDirection } from '../gameSlice'
-import useKeyControls from '../../../hooks/useKeyControls'
+import { selectShowControls } from '../../../uiSlice'
+import { changeDirection } from '../../gameSlice'
+import useKeyControls from '../../../../hooks/useKeyControls'
 import './Controls.css'
 
 export default function Controls() {
