@@ -1,6 +1,10 @@
-export const getScoreList = async () => {
+export const getScoreList = async (options = {}) => {
+  const { offset = 0, limit = 5 } = options
+
   try {
-    const data = await (await fetch('/api')).json()
+    const data = await (
+      await fetch(`/api?limit=${limit}&offset=${offset}`)
+    ).json()
     return data
   } catch (error) {
     console.error(error)

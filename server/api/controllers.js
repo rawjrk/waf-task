@@ -2,14 +2,15 @@ const { query } = require('../db')
 
 module.exports.index = async (req, res) => {
   try {
-    const limit = 20
+    const { limit = 5, offset = 0 } = req.query
     const data = await query(
-      `SELECT * FROM score ORDER BY points DESC LIMIT $1`,
-      [limit],
+      `SELECT * FROM score ORDER BY points
+      DESC LIMIT $1 OFFSET $2`,
+      [limit, offset],
     )
 
     const result = data.map((row, i) => ({
-      position: i + 1,
+      position: i + 1 + parseInt(offset),
       name: row.name,
       points: row.points,
       feedOption: row['feed_option'],

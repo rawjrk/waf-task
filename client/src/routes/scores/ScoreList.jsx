@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { selectScoreList, setScoreList } from '../uiSlice'
@@ -9,8 +9,19 @@ import './ScoreList.css'
 
 export default function Scores() {
   const scoreList = useSelector(selectScoreList)
+  const [offset, setOffset] = useState(5)
 
   const dispatch = useDispatch()
+
+  const loadMoreHandler = () => {
+    if (!scoreList) return
+    getScoreList({ limit: 10, offset }).then((data) => {
+      if (data.length) {
+        dispatch(setScoreList([...scoreList, ...data]))
+        setOffset(offset + 10)
+      }
+    })
+  }
 
   useEffect(() => {
     getScoreList().then((data) => {
@@ -46,6 +57,7 @@ export default function Scores() {
 
       <nav>
         <Link to={'../gameplay'}>New Game</Link>
+        <button onClick={loadMoreHandler}>Load More</button>
         <Link to={'..'}>Quit to Menu</Link>
       </nav>
     </div>
