@@ -14,6 +14,7 @@ const initialState = {
   gameStarted: false,
   gamePaused: true,
   gameOver: false,
+  scoreRecorded: false,
 
   snake: [
     { x: 6, y: 4 },
@@ -98,6 +99,9 @@ const gameSlice = createSlice({
       state.gamePaused = true
       state.gameOver = true
     },
+    setScoreRecorded(state, action) {
+      state.scoreRecorded = action.payload
+    },
     restartGame(state) {
       if (!state.gameStarted) return
       return {
@@ -113,6 +117,7 @@ export const {
   changeDirection,
   setIncrementValue,
   tooglePause,
+  setScoreRecorded,
   restartGame,
 } = gameSlice.actions
 
@@ -123,6 +128,7 @@ export const selectIncrementValue = (state) => state.game.incrementValue
 export const selectGameStarted = (state) => state.game.gameStarted
 export const selectGamePaused = (state) => state.game.gamePaused
 export const selectGameOver = (state) => state.game.gameOver
+export const selectScoreRecorded = (state) => state.game.scoreRecorded
 
 export const selectPoints = (state) => state.game.points
 export const selectSnake = (state) => state.game.snake

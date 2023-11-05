@@ -8,6 +8,8 @@ import {
   selectGamePaused,
   selectGameOver,
   moveSnake,
+  selectScoreRecorded,
+  setScoreRecorded,
 } from './gameSlice'
 import { addScore } from '../../lib/api'
 import { Screen, Stats, Switches, Controls, AskNickname } from './components'
@@ -20,6 +22,7 @@ export default function Game() {
   const tickTime = useSelector(selectTickTime)
   const gamePaused = useSelector(selectGamePaused)
   const gameOver = useSelector(selectGameOver)
+  const scoreRecorded = useSelector(selectScoreRecorded)
 
   const dispatch = useDispatch()
 
@@ -31,10 +34,12 @@ export default function Game() {
   })
 
   useEffect(() => {
-    if (gameOver) {
-      addScore(nickname, points, feedOption)
+    if (gameOver && !scoreRecorded) {
+      addScore(nickname, points, feedOption).then(() =>
+        dispatch(setScoreRecorded(true)),
+      )
     }
-  }, [gameOver])
+  }, [gameOver, scoreRecorded])
 
   if (!nickname) {
     return <AskNickname />
