@@ -21,6 +21,7 @@ const initialState = {
     { x: 5, y: 4 },
     { x: 4, y: 4 },
   ],
+  previousDirection: '',
   direction: 'right',
 }
 initialState.apple = randomPosition(initialState.screenSize, initialState.snake)
@@ -48,13 +49,20 @@ const gameSlice = createSlice({
       state.apple = randomPosition(state.screenSize, state.snake)
     },
     moveSnake(state) {
-      const newHead = { ...state.snake[0] }
+      const [head] = state.snake
+      const neck = state.snake.slice(1, 3)
+      let newHead = { ...head }
       const { x: xLimit, y: yLimit } = state.screenSize
 
       if (state.direction === 'left') newHead.x--
       if (state.direction === 'right') newHead.x++
       if (state.direction === 'up') newHead.y--
       if (state.direction === 'down') newHead.y++
+
+      if (includesPosition(neck, newHead)) {
+        state.direction = state.previousDirection
+        return
+      }
 
       if (newHead.x >= xLimit) newHead.x = 0
       if (newHead.y >= yLimit) newHead.y = 0
@@ -85,6 +93,9 @@ const gameSlice = createSlice({
       if (state.direction === 'up' && newDirection === 'down') return
       if (state.direction === 'down' && newDirection === 'up') return
 
+      if (!(state.previousDirection === state.direction)) {
+        state.previousDirection = state.direction
+      }
       state.direction = newDirection
     },
     tooglePause(state) {
