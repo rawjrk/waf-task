@@ -24,7 +24,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   border-collapse: collapse;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Courier Prime', monospace;
 
   background-color: var(--main-bg);
   color: var(--main-color);
