@@ -16,7 +16,7 @@ export default function Scores() {
   const loadMoreHandler = () => {
     if (!scoreList) return
     getScoreList({ limit: 10, offset }).then((data) => {
-      if (data.length) {
+      if (data?.length) {
         dispatch(setScoreList([...scoreList, ...data]))
         setOffset(offset + 10)
       }
