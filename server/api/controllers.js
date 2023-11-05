@@ -1,7 +1,15 @@
 const { query } = require('../db')
+const errorHandler = require('../utils/errorHandler')
+const ValidationError = require('../utils/ValidationError')
+const { validationResult } = require('express-validator')
 
-module.exports.index = async (req, res) => {
+module.exports.index = async (req, res, next) => {
   try {
+    const result = validationResult(req)
+    if (result.errors.length) {
+      throw new ValidationError(result.errors)
+    }
+
     const { limit = 5, offset = 0 } = req.query
 
     const queryResult = await query(
@@ -22,14 +30,18 @@ module.exports.index = async (req, res) => {
       message: 'success',
       data,
     })
-  } catch (error) {
-    console.error(error)
-    res.status(500).send({ status: 500, message: error.message })
+  } catch (err) {
+    errorHandler(err, req, res, next)
   }
 }
 
-module.exports.create = async (req, res) => {
+module.exports.create = async (req, res, next) => {
   try {
+    const result = validationResult(req)
+    if (result.errors.length) {
+      throw new ValidationError(result.errors)
+    }
+
     const { name, points, feedOption } = req.body
     await query(
       `INSERT INTO score (name, points, feed_option, dt)
@@ -41,8 +53,7 @@ module.exports.create = async (req, res) => {
       status: 200,
       message: 'success',
     })
-  } catch (error) {
-    console.error(error)
-    res.status(500).send({ status: 500, message: error.message })
+  } catch (err) {
+    errorHandler(err, req, res, next)
   }
 }
