@@ -32,12 +32,11 @@ app.use(
   }),
 )
 
-app.use(limits)
 app.use(helmet())
 app.use(express.json())
 app.use(express.static(path.resolve(__dirname, '../client/dist')))
 
-app.use('/api', apiRoutes)
+app.use('/api', limits, apiRoutes)
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname), '../client/dist/index.html')
